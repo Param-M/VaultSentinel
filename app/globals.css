@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #06070a;
+  --bg-alt: #0e111a;
+  --text-color: #ffffff;
+  --text-muted: #7b88a0;
+  --accent-blue: #3E81FF;
+  --accent-cyan: #64A0FF;
+  --accent-purple: #4272FF;
+  --accent-pink: #2c59cc;
+  --accent-green: #00e073;
+  --accent-orange: #ff7a00;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.06);
+}
+
+.light {
+  --bg-color: #e8edf7;
+  --bg-alt: #ffffff;
+  --text-color: #0f172a;
+  --text-muted: #475569;
+  --border-color: rgba(0, 0, 0, 0.12);
+  --card-border: rgba(0, 0, 0, 0.08);
+}
+
+/* ========================
+   LIGHT MODE GLOBAL OVERRIDES
+   ======================== */
+
+/* Text */
+.light .text-white {
+  color: #0f172a !important;
+}
+.light .text-muted,
+.light [class*="text-muted"] {
+  color: #475569 !important;
+}
+.light .text-gray-400,
+.light .text-gray-300 {
+  color: #475569 !important;
+}
+.light .text-foreground {
+  color: #0f172a !important;
+}
+
+/* Cards — dark card classes → white glassmorphism */
+.light .bg-\[\#0B0E14\],
+.light .bg-\[\#06070a\],
+.light .bg-\[\#1C1C1C\],
+.light .bg-\[\#030508\],
+.light .bg-\[\#0a0d14\] {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(14px) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Semi-transparent black backgrounds */
+.light .bg-black\/50,
+.light .bg-black\/60,
+.light .bg-black\/80,
+.light .bg-\[\#05050A\]\/70 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  color: #0f172a !important;
+}
+
+/* White/5 to White/10 backgrounds (icon wells, etc.) */
+.light .bg-white\/5,
+.light .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Borders */
+.light .border-white\/5,
+.light .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+.light .border-borderLight {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* h2, h3 headings inside cards */
+.light h2,
+.light h3 {
+  color: #0f172a !important;
+}
+
+/* Muted descriptive text inside cards */
+.light p,
+.light span:not([class*="text-accent"]):not([class*="gradient"]) {
+  color: #334155;
+}
+
+/* Accent text stays blue so branding stays */
+.light .text-accent-blue {
+  color: #2563eb !important;
+}
+.light .text-accent-green {
+  color: #059669 !important;
+}
+.light .text-accent-orange {
+  color: #d97706 !important;
+}
+
+/* Badge backgrounds for HowItWorks dark bg badges */
+.light .bg-\[\#030e2b\] {
+  background-color: #eff6ff !important;
+  border-color: #2563eb !important;
+  color: #1e40af !important;
+}
+.light .bg-\[\#00170b\] {
+  background-color: #f0fdf4 !important;
+  border-color: #059669 !important;
+  color: #065f46 !important;
+}
+.light .bg-\[\#240a00\] {
+  background-color: #fff7ed !important;
+  border-color: #d97706 !important;
+  color: #92400e !important;
+}
+
+/* ========================
+   BASE STYLES
+   ======================== */
+
+body {
+  background-color: transparent !important;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+/* Custom Component Keyframes */
+@keyframes float {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 10px currentColor; }
+  50% { box-shadow: 0 0 25px currentColor; }
+  100% { box-shadow: 0 0 10px currentColor; }
+}
+
+@keyframes scroll-apis-vert {
+  0% { transform: translateY(60px); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-60px); opacity: 0; }
+}
+
+.hover-api {
+  font-size: 0.55rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; border: 1px solid;
+  background: var(--bg-color); box-shadow: 0 0 10px currentColor; text-align: center;
+  animation: scroll-apis-vert 4s linear infinite; flex-shrink: 0; width: fit-content;
+}
+
+.status-dot {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%; box-shadow: 0 0 8px currentColor;
+}
+.status-dot.red { background: var(--accent-pink); color: var(--accent-pink); }
+.status-dot.orange { background: var(--accent-orange); color: var(--accent-orange); }
+.status-dot.green { background: var(--accent-green); color: var(--accent-green); }
+
+.demo-btn {
+  background: var(--accent-blue); color: #fff; border: none; padding: 0.6rem 1.2rem;
+  border-radius: 6px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;
+  box-shadow: 0 4px 14px rgba(62, 129, 255, 0.4); transition: all 0.3s ease;
+}
+.demo-btn:hover {
+  background: var(--accent-cyan); transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 160, 255, 0.6); color: #fff;
+}
